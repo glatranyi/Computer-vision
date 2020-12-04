@@ -7,7 +7,7 @@
 
 #include "Blob.h"
 
-#define SHOW_STEPS     // kommenteld ki ezt a sort ha látni akarod lépéseket
+#define SHOW_STEPS     // kommenteld ki ezt a sort ha nem akarod látni lépéseket
 
 
 // globális változók  (színek) ///////////////////////////////////////////////////////////////////////////////
@@ -42,7 +42,7 @@ int main(void) {
 
 	int carCount = 0;
 
-	capVideo.open("Teszt1.mp4"); //UK Motorway M25 Trucks, Lorries, Cars Highway.mp4  videoblocks-aerial-view-on-the-driving-cars-on-bridge-vehicles-moving-on-the-street_rrgwh-2b__96ec38126bc3776ab0cd3b99619ede4e__P360.mp4
+	capVideo.open("Teszt4.webm"); //UK Motorway M25 Trucks, Lorries, Cars Highway.mp4  videoblocks-aerial-view-on-the-driving-cars-on-bridge-vehicles-moving-on-the-street_rrgwh-2b__96ec38126bc3776ab0cd3b99619ede4e__P360.mp4
 
 	if (!capVideo.isOpened()) {                                                 // ha nemlehet megnyitni videó fájlt
 		std::cout << "error reading video file" << std::endl << std::endl;      // írjunk ki error-t
@@ -59,13 +59,14 @@ int main(void) {
 	capVideo.read(imgFrame1);
 	capVideo.read(imgFrame2);
 
-	int intHorizontalLinePosition = (int)std::round((double)imgFrame1.rows * 0.35);
+	int intHorizontalLinePosition = (int)std::round((double)imgFrame1.rows * 0.6);
 
 	crossingLine[0].x = 0;
 	crossingLine[0].y = intHorizontalLinePosition;
 
 	crossingLine[1].x = imgFrame1.cols - 1;
 	crossingLine[1].y = intHorizontalLinePosition;
+	//std::cout << intHorizontalLinePosition; teszt
 
 	char chCheckForEscKey = 0;
 
